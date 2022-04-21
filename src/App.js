@@ -1,10 +1,11 @@
 import React from "react";
-import { Intro } from "./components";
+import { Intro, About } from "./components";
 
 const App = () => {
   return (
     <div>
       <Intro />
+      <About />
     </div>
   );
 };
