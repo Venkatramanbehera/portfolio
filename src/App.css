@@ -1,0 +1,290 @@
+/* Base styles and variables */
+:root {
+  --nav-height: 80px;
+  --primary-color: #333;
+  --background-color: #fff;
+  --text-color: #333;
+  --border-color: #ddd;
+}
+
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow: hidden;
+  font-size: 16px;
+}
+
+body {
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+/* App Container */
+.App {
+  text-align: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Navigation */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: bold;
+  border: 2px solid var(--primary-color);
+  padding: 0.5rem;
+  min-width: 40px;
+  text-align: center;
+}
+
+.nav-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.nav-items a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 1rem;
+  text-transform: lowercase;
+  transition: color 0.3s ease;
+  padding: 0.5rem;
+}
+
+.nav-items a:hover,
+.nav-items a.active {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.cta-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.resume-btn,
+.hire-btn {
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.resume-btn {
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.hire-btn {
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  color: var(--background-color);
+}
+
+.resume-btn:hover {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+}
+
+.hire-btn:hover {
+  opacity: 0.9;
+}
+
+/* Content Container */
+.HomeContainer {
+  height: calc(100vh - var(--nav-height));
+  margin-top: calc(var(--nav-height) * 2);
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  padding: 0 1rem;
+}
+
+/* Sections */
+section {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  padding: 2rem 1rem;
+}
+
+/* Typography */
+h1 { font-size: 2rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.5rem; }
+p { font-size: 1rem; }
+
+/* Tablet Breakpoint */
+@media (min-width: 768px) {
+  nav {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .nav-items {
+    flex-direction: row;
+    width: auto;
+    gap: 2rem;
+  }
+
+  .cta-buttons {
+    flex-direction: row;
+    width: auto;
+  }
+
+  .resume-btn,
+  .hire-btn {
+    width: auto;
+    padding: 0.5rem 1.5rem;
+  }
+
+  .HomeContainer {
+    margin-top: var(--nav-height);
+    padding: 0 2rem;
+  }
+
+  /* Typography */
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.75rem; }
+}
+
+/* Desktop Breakpoint */
+@media (min-width: 1024px) {
+  .HomeContainer {
+    padding: 0 4rem;
+  }
+
+  section {
+    padding: 4rem 2rem;
+  }
+
+  /* Typography */
+  h1 { font-size: 3rem; }
+  h2 { font-size: 2.5rem; }
+  h3 { font-size: 2rem; }
+}
+
+/* Large Desktop Breakpoint */
+@media (min-width: 1440px) {
+  .HomeContainer {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Project Cards Responsive Grid */
+.OtherProjectsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .OtherProjectsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Featured Project Responsive Layout */
+.FeaturedProject {
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .FeaturedProject {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .FeaturedProject:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+}
+
+/* Experience Timeline Responsive */
+.ExperienceItem {
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .ExperienceItem {
+    flex-direction: row;
+    gap: 3rem;
+    padding: 0 2rem;
+  }
+}
+
+/* Contact Section Responsive */
+.ContactSection {
+  padding: 2rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .ContactSection {
+    padding: 4rem 2rem;
+  }
+}
+
+/* Utility Classes */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.hide-mobile {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hide-mobile {
+    display: block;
+  }
+  
+  .hide-desktop {
+    display: none;
+  }
+}
